@@ -3,7 +3,7 @@
 <head>
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18206092847"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18282018045"></script>
 
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -14,8 +14,23 @@
 
       gtag('js', new Date());
 
-      gtag('config', 'AW-18206092847');
+      gtag('config', 'AW-18282018045');
     </script>
+    <script>
+  // Helper function to delay opening a URL until a gtag event is sent.
+  function gtagSendEvent(url) {
+    var callback = function () {
+      if (typeof url === 'string') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'ads_conversion_Contact_1', {
+      'event_callback': callback,
+      'event_timeout': 2000
+    });
+    return false;
+  }
+</script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -83,7 +98,7 @@
             
             <div class="nav-cta">
                <a href="tel:+96550451425" 
-onclick="gtag('event', 'conversion', {'send_to': 'AW-18206450981/82MyCOvEj8UcEKXKwelD'});"
+onclick="return gtagSendEvent('tel:+96550451425');"
 class="btn btn-primary config-call-href">
                     <i class="fas fa-phone-alt"></i>
                     <span data-config="phoneNumber">+96550451425</span>
