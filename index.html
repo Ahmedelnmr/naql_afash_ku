@@ -4,33 +4,37 @@
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18282018045"></script>
-
     <script>
       window.dataLayer = window.dataLayer || [];
-
       function gtag() {
         dataLayer.push(arguments);
       }
-
       gtag('js', new Date());
 
       gtag('config', 'AW-18282018045');
     </script>
+
+    <!-- Event snippet for Contact conversion page -->
     <script>
-  // Helper function to delay opening a URL until a gtag event is sent.
-  function gtagSendEvent(url) {
-    var callback = function () {
-      if (typeof url === 'string') {
-        window.location = url;
+      gtag('event', 'conversion', {'send_to': 'AW-18282018045/3R5cCO-F-PccEP3pxY1E'});
+    </script>
+
+    <script>
+      // Helper function to delay opening a URL until a gtag event is sent.
+      function gtagSendEvent(url) {
+        var callback = function () {
+          if (typeof url === 'string') {
+            window.location = url;
+          }
+        };
+        gtag('event', 'conversion', {
+          'send_to': 'AW-18282018045/3R5cCO-F-PccEP3pxY1E',
+          'event_callback': callback,
+          'event_timeout': 2000
+        });
+        return false;
       }
-    };
-    gtag('event', 'ads_conversion_Contact_1', {
-      'event_callback': callback,
-      'event_timeout': 2000
-    });
-    return false;
-  }
-</script>
+    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -97,9 +101,9 @@
             </nav>
             
             <div class="nav-cta">
-               <a href="tel:+96550451425" 
-onclick="return gtagSendEvent('tel:+96550451425');"
-class="btn btn-primary config-call-href">
+                <a href="tel:+96550451425" 
+                   onclick="return gtagSendEvent(this.href);"
+                   class="btn btn-primary config-call-href">
                     <i class="fas fa-phone-alt"></i>
                     <span data-config="phoneNumber">+96550451425</span>
                 </a>
