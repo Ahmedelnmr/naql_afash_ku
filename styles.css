@@ -1,4 +1,4 @@
-/* استيراد خط القاهرة المتميز للغة العربية */
+﻿/* استيراد خط القاهرة المتميز للغة العربية */
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap');
 
 /* تعريف المتغيرات وثوابت التصميم */
@@ -958,73 +958,76 @@ img {
 }
 
 /* -------------------------------------------------------------
-   11. أزرار التواصل العائمة (Floating Contact Actions)
+   11. أزرار التواصل العائمة الثابتة (Floating Contact Actions)
 ------------------------------------------------------------- */
 .floating-contact {
     position: fixed;
-    bottom: 30px;
-    left: 30px;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     gap: 12px;
-    z-index: 999;
+    z-index: 99999;
+    direction: rtl;
 }
 
 .floating-btn {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: var(--bg-white);
-    font-size: 24px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    transition: var(--transition-smooth);
-    animation: float 3s ease-in-out infinite;
-}
-
-.floating-whatsapp {
-    background-color: var(--whatsapp-color);
-    animation-delay: 0.5s;
-}
-
-.floating-whatsapp:hover {
-    background-color: var(--whatsapp-hover);
-    transform: scale(1.1);
+    gap: 10px;
+    padding: 13px 22px;
+    border-radius: 50px;
+    color: #ffffff !important;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.18);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease, background 0.25s ease;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    -webkit-tap-highlight-color: transparent;
 }
 
 .floating-call {
-    background-color: var(--call-color);
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
 }
 
 .floating-call:hover {
-    background-color: var(--call-hover);
-    transform: scale(1.1);
+    background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
+    transform: translateX(-5px) scale(1.03);
+    box-shadow: 0 12px 30px rgba(2, 132, 199, 0.4);
+    color: #ffffff !important;
 }
 
-/* شريط الاتصال الهاتفي السفلي للهواتف المحمولة */
+.floating-whatsapp {
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+}
+
+.floating-whatsapp:hover {
+    background: linear-gradient(135deg, #20ba5a 0%, #0e7063 100%);
+    transform: translateX(-5px) scale(1.03);
+    box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
+    color: #ffffff !important;
+}
+
+.floating-btn i {
+    font-size: 18px;
+    transition: transform 0.25s ease;
+}
+
+.floating-btn:hover i {
+    transform: scale(1.15);
+}
+
+/* إلغاء الشريط السفلي تماماً لتلبية متطلبات التصميم */
 .mobile-sticky-cta {
-    display: none;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(15, 23, 42, 0.95);
-    backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 10px 16px;
-    z-index: 9999;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    display: none !important;
 }
-
-.mobile-sticky-cta .btn {
-    padding: 12px 16px;
-    font-size: 15px;
-    width: 100%;
-}
-
 /* -------------------------------------------------------------
    12. تأثيرات التحريك والظهور عند التمرير (Animations)
 ------------------------------------------------------------- */
@@ -1159,26 +1162,54 @@ img {
         gap: 30px;
     }
     
-    /* تفعيل أزرار الهاتف العائمة بالأسفل */
+        /* إلغاء الشريط السفلي تماماً - الأزرار تبقى عائمة على جانب الشاشة في الهواتف */
     .mobile-sticky-cta {
-        display: grid;
+        display: none !important;
     }
     
-    /* إخفاء الأزرار العائمة الفردية لتجنب الازدحام مع شريط الهاتف */
     .floating-contact {
-        bottom: 75px;
-        left: 20px;
+        right: 12px;
+        left: auto;
+        bottom: auto;
+        top: 60%;
+        transform: translateY(-50%);
+        gap: 8px;
+        z-index: 99999;
     }
     
     .floating-btn {
-        width: 48px;
-        height: 48px;
-        font-size: 20px;
+        padding: 8px 14px;
+        font-size: 13px;
+        gap: 6px;
+        border-radius: 30px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.18);
+    }
+    
+    .floating-btn i {
+        font-size: 15px;
     }
 }
 
 /* شاشات الهواتف الصغيرة */
 @media (max-width: 480px) {
+    .floating-contact {
+        right: 10px;
+        top: 62%;
+        gap: 7px;
+    }
+
+    .floating-btn {
+        padding: 7px 12px;
+        font-size: 12px;
+        gap: 5px;
+        border-radius: 25px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
+    }
+
+    .floating-btn i {
+        font-size: 14px;
+    }
+
     .section-title {
         font-size: 28px;
     }

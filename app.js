@@ -1,4 +1,4 @@
-// ملف التفاعل الديناميكي للموقع
+﻿// ملف التفاعل الديناميكي للموقع
 
 document.addEventListener("DOMContentLoaded", () => {
     // 1. تحميل الإعدادات من ملف config.js وحقنها في الصفحة
@@ -51,13 +51,14 @@ function initAppConfiguration() {
 
     // تحديث روابط الاتصال الهاتفي tel:
     document.querySelectorAll('.config-call-href').forEach(link => {
-        link.setAttribute('href', `tel:${CONFIG.phoneNumber}`);
+        const cleanTel = (CONFIG.telNumber || CONFIG.phoneNumber || "").replace(/\s+/g, "");
+        link.setAttribute('href', 'tel:' + cleanTel);
     });
 
     // تحديث روابط الواتساب https://wa.me/
     const encodedMsg = encodeURIComponent(CONFIG.whatsappMessage);
     document.querySelectorAll('.config-whatsapp-href').forEach(link => {
-        link.setAttribute('href', `https://wa.me/${CONFIG.whatsappNumber}?text=${encodedMsg}`);
+        link.setAttribute('href', `https://wa.me/${CONFIG.whatsappNumber}`);
     });
 }
 
