@@ -1,4 +1,4 @@
-﻿// ملف التفاعل الديناميكي للموقع
+// ملف التفاعل الديناميكي للموقع
 
 document.addEventListener("DOMContentLoaded", () => {
     // 1. تحميل الإعدادات من ملف config.js وحقنها في الصفحة
@@ -15,6 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 5. تأثيرات ظهور العناصر عند التمرير (Scroll Reveal Animations)
     initScrollAnimations();
+
+    // 6. تتبع إحالة الاتصال الناجحة في إعلانات جوجل (Contact Conversion)
+    initConversionTracking();
 });
 
 // حقن البيانات من config.js في عناصر HTML
@@ -174,5 +177,19 @@ function initScrollAnimations() {
     const revealElements = document.querySelectorAll(".reveal-fade, .reveal-slide-up, .reveal-slide-right, .reveal-slide-left");
     revealElements.forEach(el => {
         observer.observe(el);
+    });
+}
+
+// تتبع إحالة الاتصال والواتساب في Google Ads
+function initConversionTracking() {
+    const contactLinks = document.querySelectorAll('a[href^="tel:"], a[href*="wa.me"], .config-call-href, .config-whatsapp-href');
+    contactLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (typeof gtag === 'function') {
+                gtag('event', 'conversion', {
+                    'send_to': 'AW-18282018045/O5OUCJiQ4_gcEP3pxY1E'
+                });
+            }
+        });
     });
 }
